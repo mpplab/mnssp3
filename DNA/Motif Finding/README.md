@@ -1,0 +1,2 @@
+# Motif Finding
+n-gram is an exact algorithm, and its’ calculation result is the frequency statistics of the motif conservative sites. It has powerful capabilities for modeling sequence data and widely used in computational biology. The platform supports the direct input of DNA gene sequences or fasta format files for DNA motif finding.
