@@ -4,6 +4,7 @@ Created on Sun May 14 17:56:49 2017
 
 @author: 84664
 """
+from __future__ import print_function
 import string
 import numpy as np
 import math
@@ -35,9 +36,9 @@ def ARE(Truefile,Noisefile,top_k):
         else:
             ARE += 1.0
     ARE = ARE/top_k
-    print " TOP-K : %d" % (top_k) 
-    print "模式支持度计数可用性度量"
-    print "(1)ARE: %s\n" %(str(ARE))
+    print(" TOP-K : %d" % (top_k)) 
+    print("模式支持度计数可用性度量")
+    print("(1)ARE: %s\n" %(str(ARE)))
 
 def Accuracy(Truefile, Noisefile, top_k ):
     True_seq_dic, Noise_seq_dic = getSeqDict( Truefile, Noisefile)
@@ -49,7 +50,7 @@ def Accuracy(Truefile, Noisefile, top_k ):
             TP += 1             
         else:
             FP += 1
-    print "(2) Accuracy : %s" % (TP/top_k)
+    print("(2) Accuracy : %s" % (TP/top_k))
     #print "   (2) FP : %f" % (FP/top_k)
 
 
@@ -68,7 +69,7 @@ def NRMSE(Truefile, Noisefile, top_k):
             
     RMSE = math.sqrt(MSE/TP)
     NRMSE = RMSE/(sum(True_seq_dic.values())/TP)
-    print "(3)NRMSE : %s"%(NRMSE)
+    print("(3)NRMSE : %s"%(NRMSE))
 
 def main():
 	input_dir = "data/input/"
@@ -83,11 +84,11 @@ def main():
 	Truefile = output_dir + dataset_name + "N =%d[%d,%d]theta=%d-true"%(N,L_Left,L_UP,theta) + ".fa"
 	#Truefile = dataset_name + "N =%d[%d,%d]theta=%d-true"%(N,L_Left,L_UP,theta)
 	Noisefile = output_dir + dataset_name + "N =%d[%d,%d]theta=%deps=%.2f-noise"%((N,L_Left,L_UP,theta,epsilon))+".fa"
-	print "l_max:%d"%(l_max)
-	print "L_l:%d"%(L_Left)
-	print "l_u:%d"%(L_UP)
-	print "deta:%d"%(theta)
-	print "epsilon:%f"%(epsilon)
+	print("l_max:%d"%(l_max))
+	print("L_l:%d"%(L_Left))
+	print("l_u:%d"%(L_UP))
+	print("deta:%d"%(theta))
+	print("epsilon:%f"%(epsilon))
 	ARE(Truefile,Noisefile,N) 
 	Accuracy(Truefile, Noisefile, N) 
 	NRMSE(Truefile, Noisefile,N)

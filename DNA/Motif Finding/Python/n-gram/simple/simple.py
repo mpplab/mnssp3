@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+from __future__ import print_function
 from collections import Counter
 import numpy as np
 import Levenshtein
@@ -21,7 +22,7 @@ def Read_Truncate_Data(input_file,l_max):
 		else:
 			countline = countline + 1
 			string = line.strip()
-			for i in xrange(0,len(string),l_max):
+			for i in range(0,len(string),l_max):
 					#print string[i:i+l_max]
 				if len(string[i:i+l_max].strip() )== l_max:
 					sequences.append(string[i:i+l_max].strip())
@@ -32,13 +33,13 @@ def Read_Truncate_Data(input_file,l_max):
 
 def motif(sequences,L_Left,L_UP):
 	len_motifs_sup = {}
-	for i in xrange(L_Left,L_UP+1):
+	for i in range(L_Left,L_UP+1):
 		motif = Counter() 
 		for x in sequences:
 			G = ngram.NGram(N = i)
 			motif.update(G.ngrams(x))
 			len_motifs_sup[i] = motif
-	print len_motifs_sup
+	print(len_motifs_sup)
 	return len_motifs_sup
 
 

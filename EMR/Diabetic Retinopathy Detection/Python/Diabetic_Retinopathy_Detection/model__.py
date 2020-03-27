@@ -125,7 +125,7 @@ class Tensorflow_Model():
             saver.save(self.sess, "C:\wamp64\www\dr2\Diabetic_Retinopathy_Detection\Models\model.ckpt")
 
     def text_create(self, name, msg):
-        desktop_path = "C:\wamp64\www\dr2\Diabetic_Retinopathy_Detection\MNSS\result\"  # 新创建的txt文件的存放路径
+        desktop_path = r"C:\wamp64\www\dr2\Diabetic_Retinopathy_Detection\MNSS\result\\"  # 新创建的txt文件的存放路径
         full_path = desktop_path + name + '.txt'  # 也可以创建一个.doc的word文档
         file = open(full_path, 'w')
         string = str(msg)
