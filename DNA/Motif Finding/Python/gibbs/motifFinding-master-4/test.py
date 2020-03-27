@@ -1,6 +1,7 @@
+from __future__ import print_function
 import numpy as np
 data1=np.load('name-IC.npy')
-print data1
+print(data1)
 # data2=np.load('gibbs_02_IC.npy')
 # data3=np.load('gibbs_03_IC.npy')
 

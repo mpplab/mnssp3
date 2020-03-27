@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+from __future__ import print_function
 from collections import Counter
 import numpy as np
 import Levenshtein
@@ -22,7 +23,7 @@ def Read_Truncate_Data(input_file,l_max):
 		else:
 			countline = countline + 1
 			string = line.strip()
-			for i in xrange(0,len(string),l_max):
+			for i in range(0,len(string),l_max):
 					#print string[i:i+l_max]
 				if len(string[i:i+l_max].strip() )== l_max:
 					sequences.append(string[i:i+l_max].strip())
@@ -32,7 +33,7 @@ def Read_Truncate_Data(input_file,l_max):
 
 def motif(sequences,L_Left,L_UP):
 	len_motifs_sup = {}
-	for i in xrange(L_Left,L_UP+1):
+	for i in range(L_Left,L_UP+1):
 		motif = Counter() 
 		for x in sequences:
 			G = ngram.NGram(N = i)
@@ -79,13 +80,13 @@ def simple(len_motifs_sup,l_max,L_Left,L_UP,epsilon,theta,top_k,output_filename)
 			for each_seq1 in Bucket[i]:
 				len_motifs_consolidatesup.setdefault(l,{})[each_seq1]= 0
 				if i >= deta:
-					for j in xrange(i-deta ,min(i+deta,l)+1):
+					for j in range(i-deta ,min(i+deta,l)+1):
 						if Bucket.has_key(j):
 							for each_seq2 in Bucket[j]:
 								if  0<=Levenshtein.hamming(each_seq1,each_seq2) <= deta:
 									len_motifs_consolidatesup.setdefault(l,{})[each_seq1] = round(float(len_motifs_consolidatesup.setdefault(l,{})[each_seq1]))  + round(float(len_motifs_sup[l][each_seq2]))
 				else:
-					for j in xrange(0,min(i+deta,1)+1):
+					for j in range(0,min(i+deta,1)+1):
 						if Bucket.has_key(j):
 							for each_seq2 in Bucket[j]:
 								if 0<=Levenshtein.hamming(each_seq1,each_seq2 )<=deta:
@@ -121,9 +122,9 @@ def main():
 	motif_Seq = Read_Truncate_Data(input_filename,l_max)
 	len_motifs_sup=motif(motif_Seq,L_Left,L_UP)
 	#print len_motifs_sup
-	print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+	print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 	len_motifs_consolidatesup= simple(len_motifs_sup,l_max,L_Left,L_UP,epsilon,theta,N,output_filename)
-	print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+	print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
 if __name__ == "__main__":
 

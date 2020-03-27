@@ -2,11 +2,17 @@
 	Generate dataset for CSS 466 motif finding project 
 	Team members: Shriyaa Mittal, Zahra Shamsi and Melanie Paige Muller
 """
+from __future__ import print_function
 
 import sys
 import random
 import time
 import os
+
+try:
+	raw_input  # Python 2
+except NameError:
+	raw_input = input  # Python 3
 
 ## Constants
 nuc = ['A','C','G','T']
@@ -44,14 +50,14 @@ if __name__ == "__main__":
 
 	## Inputs
 	if (len(sys.argv)>0 and len(sys.argv)<5):
-		print "Command line usage: python benchmark.py <ICPC -- value [0,2] with maximum 2 significant digits> <ML -- positive integer> <SL -- postive integer> <SC --positive integer>"
-		print "Information content per column (ICPC):",
+		print("Command line usage: python benchmark.py <ICPC -- value [0,2] with maximum 2 significant digits> <ML -- positive integer> <SL -- postive integer> <SC --positive integer>")
+		print("Information content per column (ICPC):", end=' ')
 		ICPC = float(raw_input())
-		print "motif lenght (ML):",
+		print("motif lenght (ML):", end=' ')
 		ML = int(raw_input())
-		print "sequence length (SL):",
+		print("sequence length (SL):", end=' ')
 		SL = int(raw_input())
-		print "sequence count (SC):",
+		print("sequence count (SC):", end=' ')
 		SC = int(raw_input())
 	else:
 		ICPC = float(sys.argv[1])
@@ -60,11 +66,11 @@ if __name__ == "__main__":
 		SC = int(sys.argv[4])
 	sum_freq=sum(freq)
 	if sum_freq != 1:
-		raise Exception, 'Sum of frequency of nucleotides is not 1.'
+		raise Exception('Sum of frequency of nucleotides is not 1.')
 	if ML>SL:
-		raise Exception, 'Motif length is greater than sequence length.'
+		raise Exception('Motif length is greater than sequence length.')
 	if (ICPC<0 or ICPC>2 or ML<=0 or SL<=0 or SC<=0 or len(str(ICPC))>4):
-		raise Exception, 'Incorrect input values.\n<ICPC -- value [0,2] with maximum 2 significant digits> <ML -- positive integer> <SL -- postive integer> <SC --positive integer>'
+		raise Exception('Incorrect input values.\n<ICPC -- value [0,2] with maximum 2 significant digits> <ML -- positive integer> <SL -- postive integer> <SC --positive integer>')
 
 	## Create dataset folder
 	dataset_folder=folder

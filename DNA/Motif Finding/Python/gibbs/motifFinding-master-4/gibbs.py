@@ -2,6 +2,7 @@
 	Run the gibbs sampling algorith on the geenrated dataset for CSS 466 motif finding project 
 	Team members: Shriyaa Mittal, Zahra Shamsi and Melanie Paige Muller
 """
+from __future__ import print_function
 
 import random
 import time
@@ -167,7 +168,7 @@ def main(name,L_Left,path):
 	PWM = maxPWM
 
 
-	print '======================'
+	print('======================')
 	## Writing to predictedsites.txt file
 	predicted_sites = info[1][-1]
 	f = open(name + '-predictedsites.txt', 'wb')
